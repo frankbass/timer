@@ -1,0 +1,19 @@
+{
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "seconds since opened",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankbass/timer.git"
+  },
+  "author": "Michael Tuttle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frankbass/timer/issues"
+  },
+  "homepage": "https://github.com/frankbass/timer#readme"
+}
