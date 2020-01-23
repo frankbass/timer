@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/frankbass/timer/issues"
   },
-  "homepage": "https://github.com/frankbass/timer#readme"
+  "homepage": "https://github.com/frankbass/timer#readme",
+  "dependencies": {
+    "electron": "^7.1.10"
+  }
 }
