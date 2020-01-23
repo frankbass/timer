@@ -6,11 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>timer</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 	<script src="libraries/p5.js"></script>
 	<script src="libraries/p5.dom.js"></script>
 	<script src="libraries/p5.sound.js"></script>
-	<script src="sketch.js"></script>
+	<script src="main.js"></script>
+
 
 	<style>
 		body {
@@ -24,5 +26,14 @@
 	</style>
 </head>
 <body>
+	<nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo center">Timer</a>
+    </div>
+  </nav>
+	<script>
+		const electron = require('electron');
+    const {ipcRenderer} = electron;
+	</script>
 </body>
 </html>
