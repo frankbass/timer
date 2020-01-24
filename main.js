@@ -2,7 +2,7 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
-process.enb.NODE_ENV = 'development';
+process.env.NODE_ENV = 'development';
 
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
@@ -18,9 +18,37 @@ app.on('ready', function() {
   mainWindow.on('closed', function(){
     app.quit();
   });
-  const mainMenu = menu.buildFromTemplate(mainMenuTemplate);
+  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   Menu.setApplicationMenu(mainMenu);
 });
+
+const mainMenuTemplate =  [
+  // Each object is a dropdown
+  {
+    label: 'File',
+    submenu:[
+      {
+        label:'Add Item',
+        click(){
+          createAddWindow();
+        }
+      },
+      {
+        label:'Clear Items',
+        click(){
+          mainWindow.webContents.send('item:clear');
+        }
+      },
+      {
+        label: 'Quit',
+        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click(){
+          app.quit();
+        }
+      }
+    ]
+  }
+];
 
 if(process.platform == 'darwin'){
   mainMenuTemplate.unshift({});

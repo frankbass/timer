@@ -1,4 +1,5 @@
 var timer;
+let running = false;
 
 function setup() {
   createCanvas(600, 400);
@@ -19,10 +20,12 @@ class Timer {
   }
 
   counting() {
-    if (this.second != second()) {
-      this.timePassed++;
-      this.timePassed = nf(this.timePassed, 3, 0)
-      this.second = second();
+    if (running) {
+      if (this.second != second()) {
+        this.timePassed++;
+        this.timePassed = nf(this.timePassed, 3, 0)
+        this.second = second();
+      }
     }
   }
 
@@ -36,6 +39,18 @@ class Timer {
       fill(0);
       textSize(30);
       text(this.timePassed, 5, 30);
+    }
+  }
+}
+
+function keyPressed() {
+  if (keyCode == 32) {
+    if (running) {
+      running = false;
+      background(0);
+    } else {
+      running = true;
+      background(255);
     }
   }
 }
