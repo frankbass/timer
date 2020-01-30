@@ -38,7 +38,11 @@ class Timer {
       stroke(0);
       fill(0);
       textSize(30);
-      text(this.timePassed, 5, 30);
+      this.formatMinutes = nf(floor(this.timePassed/60), 2);
+      this.formatSeconds = nf(this.timePassed%60, 2);
+
+      text(this.formatMinutes+ ":" + this.formatSeconds, 5, 30);
+      // text(this.formatSeconds, 25, 30);
     }
   }
 }
@@ -47,10 +51,8 @@ function keyPressed() {
   if (keyCode == 32) {
     if (running) {
       running = false;
-      background(0);
     } else {
       running = true;
-      background(255);
     }
   }
 }

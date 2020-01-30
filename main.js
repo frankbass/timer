@@ -4,7 +4,7 @@ const url = require('url');
 
 process.env.NODE_ENV = 'development';
 
-const {app, BrowserWindow, Menu, ipcMain} = electron;
+const {app, BrowserWindow} = electron;
 
 let mainWindow;
 
@@ -18,10 +18,11 @@ app.on('ready', function() {
   mainWindow.on('closed', function(){
     app.quit();
   });
-  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-  Menu.setApplicationMenu(mainMenu);
+  //const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+  //Menu.setApplicationMenu(mainMenu);
 });
 
+/*
 const mainMenuTemplate =  [
   // Each object is a dropdown
   {
@@ -30,13 +31,13 @@ const mainMenuTemplate =  [
       {
         label:'Add Item',
         click(){
-          createAddWindow();
+          //createAddWindow();
         }
       },
       {
         label:'Clear Items',
         click(){
-          mainWindow.webContents.send('item:clear');
+          //mainWindow.webContents.send('item:clear');
         }
       },
       {
@@ -53,6 +54,7 @@ const mainMenuTemplate =  [
 if(process.platform == 'darwin'){
   mainMenuTemplate.unshift({});
 }
+
 
 if(process.env.NODE_ENV !== 'production'){
   mainMenuTemplate.push({
@@ -71,3 +73,4 @@ if(process.env.NODE_ENV !== 'production'){
     ]
   });
 }
+*/
