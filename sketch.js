@@ -1,10 +1,22 @@
 var timer;
 let running = false;
+let playButton;
+let resetButton;
+let updateButton;
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(window.innerWidth, window.innerHeight);
   background(150);
-  timer = new Timer();
+  timer = new Timer(0);
+  playButton = createButton('play');
+  playButton.position(5, 30);
+  playButton.mousePressed(playStop);
+  resetButton = createButton('reset time');
+  resetButton.mousePressed(timeReset);
+  resetButton.position(50, 30);
+  updateButton = createButton('check for updates');
+  updateButton.mousePressed(checkUpdates);
+  updateButton.position(130, 30);
 }
 
 function draw() {
@@ -12,11 +24,10 @@ function draw() {
   timer.counting();
 }
 
-
 class Timer {
-  constructor() {
+  constructor(inputTime) {
     this.second = second();
-    this.timePassed = 0;
+    this.timePassed = inputTime;
   }
 
   counting() {
@@ -29,7 +40,6 @@ class Timer {
     }
   }
 
-  //change to minutes:seconds
   displayTime() {
     if (this.second != second()) {
       noStroke();
@@ -42,7 +52,6 @@ class Timer {
       this.formatSeconds = nf(this.timePassed%60, 2);
 
       text(this.formatMinutes+ ":" + this.formatSeconds, 5, 30);
-      // text(this.formatSeconds, 25, 30);
     }
   }
 }
@@ -51,8 +60,28 @@ function keyPressed() {
   if (keyCode == 32) {
     if (running) {
       running = false;
+      playButton.html('play');
     } else {
       running = true;
+      playButton.html('stop');
     }
   }
+}
+
+function playStop() {
+  if (running) {
+    running = false;
+    playButton.html('play');
+  } else {
+    running = true;
+    playButton.html('stop');
+  }
+}
+
+function timeReset() {
+  timer.timePassed = 0;
+}
+
+function checkUpdates() {
+
 }
